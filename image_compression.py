@@ -1,2 +1,2 @@
 # Image Compression using Singular Value Decomposition (SVD)
-import numpy as np
+import numpy as np  
