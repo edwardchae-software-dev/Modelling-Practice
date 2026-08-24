@@ -9,13 +9,14 @@ display_font = pygame.freetype.SysFont('Arial', 15)
 title_font = pygame.freetype.SysFont('Arial', 22)
 ui_manager = gui.UIManager((WIDTH, HEIGHT))
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Projectile Motion Visualisation")
 timer = pygame.time.Clock()
 run = True
 
 fps = 60
 wall_thickness = 15
 starting_offset = 50
-stopper = 0.5
+stopper = 2.5
 
 gravity = 0.98
 friction_coeff = 0.25
@@ -74,7 +75,7 @@ class Projectile:
         self.y += self.speed[1]
 
     def check_friction(self):
-        if self.y >= HEIGHT - self.radius - (wall_thickness/2):
+        if (self.y >= HEIGHT - self.radius - (wall_thickness/2)):
             if abs(self.mass * gravity * friction_coeff * self.speed[0]) > abs(self.mass * gravity * static_friction_coeff):
                 self.speed[0] -= friction_coeff * self.mass * gravity * (self.speed[0] / abs(self.speed[0]))
             else:
